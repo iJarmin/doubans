@@ -10,7 +10,7 @@ function resolve (dir) {
 
 
 
-module.exports = {
+const webpackConfig=module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/main.js'
@@ -80,3 +80,14 @@ module.exports = {
     child_process: 'empty'
   }
 }
+
+// const webpackConfig = {} // 原来的webpack配置
+
+const vuxLoader = require('vux-loader')
+
+module.exports = vuxLoader.merge(webpackConfig, {
+  options: {},
+  plugins: [{
+    name: 'vux-ui'
+  }]
+})
