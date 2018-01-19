@@ -84,6 +84,7 @@
 
         </div>
       </div>
+      <footers></footers>
     </div>
   </div>
 </template>
@@ -94,7 +95,7 @@
   import api from '../../api/api'
   import getUrl from '../../plugin/getUrl'
   import { Actionsheet } from 'vux'
-
+  import footers from '../../components/footer.vue'
   export default {
     name:'articleDetail',
     data() {
@@ -105,7 +106,8 @@
       }
     },
     components:{
-      Actionsheet
+      Actionsheet,
+      footers
     },
     mounted:function () {
       this.info()
@@ -124,6 +126,7 @@
       //通过id获取电影信息
       info:function () {
         var that=this;
+
         axios.get(api.api.cinemaInfo+getUrl.plugin.getQueryString('id'),{
           params:{
 
@@ -131,7 +134,6 @@
         }).then(function (res) {
 //          console.log(res);
           that.detail=res.data
-          console.log(that.detail);
         }).catch(function (error) {
           console.log(error);
         })

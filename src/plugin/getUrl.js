@@ -3,11 +3,9 @@
  */
 module.exports.plugin = {
   getQueryString: function (name) {
-    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-    var r = window.location.search.substr(1).match(reg);
-    if (r != null) {
-      return unescape(r[2]);
-    }
-    return null;
+    var url = window.location.hash;
+    var reg = new RegExp("(^|&|/?)" + name + "=([^&]*)(&|$)");
+    var result = url.substr(1).match(reg);
+    return result ? decodeURIComponent(result[2]) : null;
   }
 }

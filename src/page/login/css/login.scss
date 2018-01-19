@@ -1,0 +1,54 @@
+#login{
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  .title{
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.8rem;
+    span{
+      font-size: 0.8rem;
+      color: #3fbc54;
+    }
+  }
+  .main{
+    .listItem{
+      margin-top: 1.2rem;
+      input{
+        width: 100%;
+        border: none;
+        font-size: 0.4rem;
+        color: #cbcbcb;
+        border-bottom:1px solid #cbcbcb;
+        padding-bottom: 0.1rem;
+        outline: none;
+      }
+      input::-webkit-input-placeholder{
+        color:#cbcbcb;
+      }
+      input:-moz-placeholder{
+        color:#cbcbcb;
+      }
+      input::-moz-placeholder{
+        color:#cbcbcb;
+      }
+      input:-ms-input-placeholder{
+        color:#cbcbcb;
+      }
+    }
+    input[type="submit"]{
+      margin-top: 0.6rem;
+      width: 100%;
+      height: 1.2rem;
+      background-color: #40bd55;
+      line-height: 1.2rem;
+      text-align: center;
+      color: #ffffff;
+      border-radius: 0.08rem;
+      font-size: 0.4rem;
+      border: none;
+    }
+  }
+}

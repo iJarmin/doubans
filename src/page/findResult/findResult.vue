@@ -47,6 +47,7 @@
           </div>
         </li>
       </ul>
+      <footers></footers>
     </div>
   </div>
 </template>
@@ -57,6 +58,7 @@
   import api from '../../api/api'
   import getUrl from '../../plugin/getUrl'
   import  { LoadingPlugin } from 'vux'
+  import footers from '../../components/footer.vue'
   Vue.use(LoadingPlugin)
 //  import {Group,Cell,AlertPlugin} from 'vux'
 //  Vue.use(AlertPlugin)
@@ -68,11 +70,9 @@
         list:[]
       }
     },
-//    components:{
-//      Group,
-//      Cell,
-//      Alert
-//    },
+    components:{
+      footers
+    },
     mounted:function () {
       this.result()
     },

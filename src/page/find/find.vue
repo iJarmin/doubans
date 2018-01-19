@@ -11,7 +11,7 @@
           豆瓣Top 250
         </div>
         <ul>
-          <li v-for="(v,index) in list">
+          <li @click="$router.push('/articleDetail?id='+v.id)" v-for="(v,index) in list">
             <div class="left">
               <span>{{ index }}</span>
             </div>
@@ -49,7 +49,11 @@
             </div>
           </li>
         </ul>
+        <div class="bottom">
+          <span @click="$router.push('/top250')">全部250部</span>
+        </div>
       </div>
+      <footers></footers>
     </div>
   </div>
 </template>
@@ -57,9 +61,11 @@
 <script>
   import axios from 'axios'
   import Vue from 'vue'
-  import {Group,Cell,AlertPlugin} from 'vux'
+  import {Group,Cell,AlertPlugin,LoadingPlugin} from 'vux'
   import api from '../../api/api'
+  import footers from '../../components/footer.vue'
   Vue.use(AlertPlugin)
+  Vue.use(LoadingPlugin)
   export default {
     name:'find',
     data() {
@@ -71,7 +77,8 @@
     components:{
       Group,
       Cell,
-      AlertPlugin
+      AlertPlugin,
+      footers
     },
     mounted:function () {
       this.topList()
@@ -79,7 +86,6 @@
     methods:{
       //监听input搜索
       search:function (e) {
-        console.log(e.currentTarget.value);
         this.searchText=e.currentTarget.value
       },
       //进行搜索验证
@@ -103,12 +109,16 @@
       //top250
       topList:function () {
         var that=this;
+        this.$vux.loading.show({
+          text: 'Loading'
+        })
         axios.get(api.api.Top250,{
           params:{
             count:4
           }
         }).then(function (res) {
-          console.log(res);
+          that.$vux.loading.hide()
+
           that.list=res.data.subjects
         }).catch(function (error) {
           console.log(error);

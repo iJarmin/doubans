@@ -1,25 +1,9 @@
 <template>
   <div id="app">
     <div id="app_in">
-      <footer>
-        <router-link to="/hotPlay">
-          <img src="../static/images/hot.png" alt="">
-          <span>热映</span>
-        </router-link>
-        <router-link to="/find">
-          <img src="../static/images/find.png" alt="">
-          <span>找片</span>
-        </router-link>
-        <router-link to="/my">
-          <img src="../static/images/my.png" alt="">
-          <span>我的</span>
-        </router-link>
-      </footer>
       <router-view></router-view>
     </div>
-
   </div>
-
 </template>
 
 <script>
@@ -45,7 +29,7 @@ export default {
     left: 0;
     bottom: 0;
     position: fixed;
-    box-shadow: 1px 1px 10px 0px #000;
+    box-shadow:1px 1px 31px -11px #000;
     text-align: center;
     display: flex;
     justify-content: space-around;

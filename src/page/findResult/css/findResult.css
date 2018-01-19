@@ -9,7 +9,7 @@
   box-sizing: border-box;
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
-  box-shadow: 0 0 10px 0 #000;
+  box-shadow: 1px 1px 31px -11px #000;
   align-items: center; }
   #findResult nav img {
     width: 0.65rem; }

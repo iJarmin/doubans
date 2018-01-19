@@ -1,19 +1,6 @@
 <template>
   <div id="home">
     <div class="main">
-      <div class="swiper-container" id="swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="(item,$index) in detail.imgs">
-            <a>
-              <figure class="wp-avatar banner">
-                <img v-cloak :src="item | toQiNiuImg"/>
-              </figure>
-            </a>
-          </div>
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-      </div>
       <div class="tab">
         <ul>
           <li v-for="(v,index) in tab" :class="index==tabActive? 'current':''" @click="select(index)">{{ v }}</li>
@@ -62,6 +49,7 @@
           </a>
         </li>
       </ul>
+      <footers></footers>
     </div>
   </div>
 </template>
@@ -71,94 +59,28 @@
   import Vue from 'vue'
   import  { LoadingPlugin } from 'vux'
   import Swiper from 'swiper';
+  import footers from '../../components/footer.vue'
   Vue.use(LoadingPlugin)
   export default {
     name: 'home',
     data() {
       return {
-        lists: [{
-          rating: {
-            max: 10,
-            average: 8.4,
-            stars: "45",
-            min: 0
-          },
-          genres: [
-            "剧情",
-            "儿童",
-            "家庭"
-          ],
-          title: "奇迹男孩",
-          casts: [
-            {
-              alt: "https://movie.douban.com/celebrity/1332866/",
-              avatars: {
-                small: "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1456737567.18.jpg",
-                large: "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1456737567.18.jpg",
-                medium: "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1456737567.18.jpg"
-              },
-              name: "雅各布·特伦布莱",
-              id: "1332866"
-            },
-            {
-              alt: "https://movie.douban.com/celebrity/1006964/",
-              avatars: {
-                small: "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p2059.jpg",
-                large: "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p2059.jpg",
-                medium: "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p2059.jpg"
-              },
-              name: "欧文·威尔逊",
-              id: "1006964"
-            },
-            {
-              alt: "https://movie.douban.com/celebrity/1054532/",
-              avatars: {
-                small: "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p8889.jpg",
-                large: "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p8889.jpg",
-                medium: "https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p8889.jpg"
-              },
-              name: "朱莉娅·罗伯茨",
-              id: "1054532"
-            }
-          ],
-          collect_count: 2570,
-          original_title: "Wonder",
-          subtype: "movie",
-          directors: [
-            {
-              alt: "https://movie.douban.com/celebrity/1070754/",
-              avatars: {
-                small: "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p57551.jpg",
-                large: "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p57551.jpg",
-                medium: "https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p57551.jpg"
-              },
-              name: "斯蒂芬·卓博斯基",
-              id: "1070754"
-            }
-          ],
-          year: "2017",
-          images: {
-            small: "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2507709428.jpg",
-            large: "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2507709428.jpg",
-            medium: "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2507709428.jpg"
-          },
-          alt: "https://movie.douban.com/subject/26787574/",
-          id: "26787574"
-        }],
+        lists: [],
         tab: ['即将上映', '正在热映'],
         tabActive: 0,
         getUrl: ['/v2/movie/in_theaters', '/v2/movie/coming_soon'],
         detail:{
           imgs:[
-            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516273493793&di=161a5facc3f9531cb5e384bbc49e36a0&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fe850352ac65c1038377309efb9119313b07e898a.jpg',
-            'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516273880969&di=28ac8af1276682deedd927b872ee2ec2&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F4610b912c8fcc3ce0e2e0e1e9945d688d43f2035.jpg'
+            '../../../static/images/banner_02.jpg'
           ]
         }
       }
     },
+    components:{
+      footers
+    },
     mounted: function () {
-//      this.list(this.getUrl[1])
-      this.banner()
+      this.list(this.getUrl[1])
     },
     methods: {
       //初始化列表
@@ -182,25 +104,6 @@
         } else {
           this.list(this.getUrl[0])
         }
-      },
-      //轮播图
-      banner:function () {
-        setTimeout(function () {
-          var swiperObj =  new Swiper('#swiper', {
-            loop: true,
-            pagination: '.swiper-pagination',
-            autoplay: 2000,
-            paginationClickable: true
-          });
-        },500)
-//        setTimeout(function () {
-//          state.swiperObj =  new Swiper('#swiper', {
-//            loop: true,
-//            pagination: '.swiper-pagination',
-//            autoplay: 2000,
-//            paginationClickable: true
-//          });
-//        }, 100)
       }
     }
   }

@@ -1,0 +1,63 @@
+#top250{
+  .FirstTitle{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    //box-shadow: 0 0 10px 0 #000;
+    align-items: center;
+    border-bottom:1px solid #e4e4e4;
+    img{
+      width: 0.65rem;
+    }
+    span{
+      font-size: 0.38rem;
+      color: #484848;
+    }
+  }
+  nav{
+    overflow-x: auto;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    ul{
+      display: flex;
+      flex-wrap: nowrap;
+      width: 170%;
+      height: 1.23rem;
+      align-items: center;
+      li{
+        width: 1.48rem;
+        font-size: 0.35rem;
+        color: #a0a0a0;
+        margin-right: 0.8rem;
+        position: relative;
+      }
+      li:last-child{
+        margin-right: 0;
+      }
+      .current{
+        color: #474747;
+      }
+      .current:before{
+        content: '';
+        display: block;
+        color: #474747;
+        height: 1px;
+        width: 100%;
+        background-color: #454545;
+        position: absolute;
+        bottom: -0.37rem;
+        z-index: 999;
+      }
+    }
+  }
+}

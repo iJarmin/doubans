@@ -70,5 +70,11 @@
         position: absolute;
         height: 100%;
         white-space: nowrap; }
+#find .top .bottom {
+  text-align: center;
+  margin-top: 0.1rem; }
+  #find .top .bottom span {
+    font-size: 0.25rem;
+    color: #959595; }
 
 /*# sourceMappingURL=find.css.map */
